@@ -326,6 +326,13 @@ a {
   color: white;
   cursor: pointer;
 }
+.notif-success {
+  width: 100%;
+  background-color: #ccffb3;
+  border-radius: 1rem;
+  padding: 1rem;
+  text-align: center;
+}
 
 /* responsive navbar and container*/
 @media (max-width: 600px) {

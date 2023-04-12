@@ -59,7 +59,7 @@ class Home extends BaseController
             'provinsi' => $this->request->getVar('provinsi'),
         ]);
 
-        echo "Test";
+        session()->setFlashdata('pesan','Data berhasil ditambahkan !');
 
         return redirect()->to('/');
     }
