@@ -40,13 +40,29 @@ class Home extends BaseController
     public function tambah()
     {
         $data = [
-            'title'=>'Tambah Data',
+            'title' => 'Tambah Data',
+            'validation' => session()->get('validation')
         ];
         return view('wisata/tambah', $data);
     }
 
     public function save()
     {
+        if(!$this->validate([
+            'namatempat'=>'required'
+        ])){
+            $validation = \Config\Services::validation()->listErrors();
+            // if (!empty($validation)) {
+            //     echo $validation->listErrors();
+            //     return;
+            // } else {
+            //     echo "tost";
+            //     return;
+            // // }
+            // $hello = "Hello World!";
+            return redirect()->to('/tambah')->withInput()->with('validation', $validation);
+        }
+
         $slug = url_title($this->request->getVar('namatempat'), '-', true);
 
         $this->wisataModel->save([
