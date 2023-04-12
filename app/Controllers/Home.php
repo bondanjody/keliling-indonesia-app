@@ -52,14 +52,6 @@ class Home extends BaseController
             'namatempat'=>'required'
         ])){
             $validation = \Config\Services::validation()->listErrors();
-            // if (!empty($validation)) {
-            //     echo $validation->listErrors();
-            //     return;
-            // } else {
-            //     echo "tost";
-            //     return;
-            // // }
-            // $hello = "Hello World!";
             return redirect()->to('/tambah')->withInput()->with('validation', $validation);
         }
 
