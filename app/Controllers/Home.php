@@ -49,7 +49,7 @@ class Home extends BaseController
     public function save()
     {
         if(!$this->validate([
-            'namatempat'=>'required'
+            'namatempat'=>'required|is_unique[tempatwisata.namatempat]'
         ])){
             $validation = \Config\Services::validation()->listErrors();
             return redirect()->to('/tambah')->withInput()->with('validation', $validation);
