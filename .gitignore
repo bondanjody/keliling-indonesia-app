@@ -125,3 +125,7 @@ nb-configuration.xml
 /phpunit*.xml
 /.phpunit.*.cache
 
+# Additional Files
+public/asset
+public/images
+
