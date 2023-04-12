@@ -28,6 +28,12 @@ class Home extends BaseController
             'title' => $detailData['namatempat'],
             'wisata' => $detailData
         ];
+
+        // Jika data tidak ada 
+        if(empty($data['wisata'])){
+            throw new \CodeIgniter\Exceptions\PageNotFoundException('Wisata'.$slug. ' tidak ditemukan');
+        }
+
         return view('wisata/detail', $data);
     }
 
@@ -37,5 +43,24 @@ class Home extends BaseController
             'title'=>'Tambah Data',
         ];
         return view('wisata/tambah', $data);
+    }
+
+    public function save()
+    {
+        $slug = url_title($this->request->getVar('namatempat'), '-', true);
+
+        $this->wisataModel->save([
+            'namatempat' => $this->request->getVar('namatempat'),
+            'gambar' => $this->request->getVar('gambar'),
+            'alamat' => $this->request->getVar('alamat'),
+            'tentang' => $this->request->getVar('tentang'),
+            'harga' => $this->request->getVar('harga'),
+            'slug' => $slug,
+            'provinsi' => $this->request->getVar('provinsi'),
+        ]);
+
+        echo "Test";
+
+        return redirect()->to('/');
     }
 }

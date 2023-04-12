@@ -33,6 +33,7 @@ $routes->get('/', 'Home::index');
 $routes->get('/wisata/(:segment)', 'Home::detail/$1');
 $routes->get('/tambah', 'Home::tambah');
 $routes->get('/coba/(:segment)', 'CobaController::coba/$1');
+$routes->post('/wisata/save', 'Home::save');
 
 /*
  * --------------------------------------------------------------------

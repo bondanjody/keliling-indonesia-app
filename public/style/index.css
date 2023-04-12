@@ -316,6 +316,16 @@ a {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+.submit-button {
+  padding: 0.5rem;
+  background-color: #ffcc66;
+  border: none;
+  border-radius: 5%;
+}
+.submit-button:hover {
+  color: white;
+  cursor: pointer;
+}
 
 /* responsive navbar and container*/
 @media (max-width: 600px) {

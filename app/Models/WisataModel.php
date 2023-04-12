@@ -10,6 +10,8 @@ class WisataModel extends Model
 
     protected $useTimestamps = true;
 
+    protected $allowedFields = ['namatempat', 'alamat', 'provinsi', 'slug', 'gambar', 'tentang', 'harga'];
+
     public function getWisata($slug = false)
     {
         if ($slug == false) 
