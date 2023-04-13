@@ -83,4 +83,53 @@ class Home extends BaseController
         session()->setFlashdata('pesan','Data berhasil dihapus !');
         return redirect()->to('/');
     }
+
+    public function edit($slug)
+    {
+        $data = [
+            'title' => 'Edit Data',
+            'validation' => session()->get('validation'),
+            'wisata' => $this->wisataModel->getWisata($slug)
+        ];
+
+        return view('wisata/edit', $data);
+    }
+
+    public function update($id)
+    {
+        // Cek Nama tempat
+        // $wisataLama = $this->wisataModel->getWisata($this->request->getVar());
+        
+        // echo "test2";
+
+        if(!$this->validate([
+            'namatempat' => [
+                'rules' => 'is_unique[tempatwisata.namatempat]',
+                'errors' => [
+                    'is_unique' => '{field} sudah terdaftar.'
+                ]
+            ]
+        ])){
+            $validation = \Config\Services::validation()->listErrors();
+            return redirect()->to("wisata/edit/" . $this->request->getVar('slug'))->withInput()->with('validation', $validation);
+        }
+
+
+        $slug = url_title($this->request->getVar('namatempat'), '-', true);
+
+        $this->wisataModel->save([
+            'id' => $id,
+            'namatempat' => $this->request->getVar('namatempat'),
+            'gambar' => $this->request->getVar('gambar'),
+            'alamat' => $this->request->getVar('alamat'),
+            'tentang' => $this->request->getVar('tentang'),
+            'harga' => $this->request->getVar('harga'),
+            'slug' => $slug,
+            'provinsi' => $this->request->getVar('provinsi'),
+        ]);
+
+        session()->setFlashdata('pesan','Data berhasil diubah !');
+
+        return redirect()->to('/');
+    }
 }

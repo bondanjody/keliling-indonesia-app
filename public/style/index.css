@@ -355,9 +355,12 @@ a {
 }
 .edit {
   background-color: #ff8c1a;
+  font-weight: normal;
+  font-size: 0.8rem;
 }
 .delete {
   background-color: #ff3333;
+  font-weight: normal;
 }
 
 /* responsive navbar and container*/

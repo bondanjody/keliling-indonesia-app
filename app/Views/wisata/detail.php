@@ -40,7 +40,7 @@
                             <?= csrf_field(); ?>
                                 <input type="hidden" name="_method" value="DELETE" />
                                 <button type="submit" class="button-control delete" onclick="return confirm('Apakah anda yakin untuk menghapus item ini ?');">Delete</button>
-                                <button href="#" class="button-control edit" disabled>Edit</button>
+                                <a href="/wisata/edit/<?= $wisata['slug'] ?>" class="button-control edit">Edit</a>
                             </form>
                         </div>
                     </div>
