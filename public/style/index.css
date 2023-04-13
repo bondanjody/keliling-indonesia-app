@@ -345,6 +345,20 @@ a {
 .notif-error ul li {
   list-style-type: none;
 }
+.button-control {
+  padding: 0.5rem;
+  color: white;
+  border: none;
+}
+.button-control:hover {
+  color: #010101;
+}
+.edit {
+  background-color: #ff8c1a;
+}
+.delete {
+  background-color: #ff3333;
+}
 
 /* responsive navbar and container*/
 @media (max-width: 600px) {

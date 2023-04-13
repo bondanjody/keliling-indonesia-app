@@ -76,4 +76,11 @@ class Home extends BaseController
 
         return redirect()->to('/');
     }
+
+    public function delete($id)
+    {
+        $this->wisataModel->delete($id);
+        session()->setFlashdata('pesan','Data berhasil dihapus !');
+        return redirect()->to('/');
+    }
 }

@@ -34,6 +34,16 @@
                             <p><?= $wisata['harga'] ?></p>
                         </div>
                     </div>
+                    <div class="harga">
+                        <div class="harga-description">
+                            <form action="/wisata/<?= $wisata['id'] ?>" method="post">
+                            <?= csrf_field(); ?>
+                                <input type="hidden" name="_method" value="DELETE" />
+                                <button type="submit" class="button-control delete" onclick="return confirm('Apakah anda yakin untuk menghapus item ini ?');">Delete</button>
+                                <button href="#" class="button-control edit" disabled>Edit</button>
+                            </form>
+                        </div>
+                    </div>
                     
                 </div>
     </div>
