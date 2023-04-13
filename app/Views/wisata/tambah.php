@@ -15,13 +15,13 @@
                     <tr>
                         <td>
                             <label for="namatempat" style="font-size: small;color:#555">Nama tempat</label><br>
-                            <input type="text" name="namatempat" id="namatempat" style="width:100%; height:2rem; padding:0.3rem" autofocus>
+                            <input type="text" name="namatempat" id="namatempat" style="width:100%; height:2rem; padding:0.3rem" autofocus required>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label for="tentang" style="font-size: small;color:#555">Tentang</label><br>
-                            <textarea type="text" name="tentang" id="tentang" style="width:100%; height:3rem; padding:0.3rem"></textarea>
+                            <textarea type="text" name="tentang" id="tentang" style="width:100%; height:3rem; padding:0.3rem" required></textarea>
                         </td>
                     </tr>
                     <tr>
@@ -39,13 +39,13 @@
                     <tr>
                         <td>
                             <label for="alamat" style="font-size: small;color:#555" required>Alamat (Google Maps API)</label><br>
-                            <textarea name="alamat" id="alamat" style="width:100%; height:3rem; padding:0.3rem"></textarea>
+                            <textarea name="alamat" id="alamat" style="width:100%; height:3rem; padding:0.3rem" required></textarea>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label for="provinsi" style="font-size: small;color:#555">Gambar</label><br>
-                            <input type="text" name="gambar" id="gambar" style="width:100%; height:2rem; padding:0.3rem">
+                            <input type="text" name="gambar" id="gambar" style="width:100%; height:2rem; padding:0.3rem" required>
                         </td>
                     </tr>
                     <tr>

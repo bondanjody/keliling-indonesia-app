@@ -339,6 +339,8 @@ a {
   border-radius: 1rem;
   padding: 1rem;
   text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
 }
 .notif-error ul li {
   list-style-type: none;
