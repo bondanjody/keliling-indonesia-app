@@ -15,37 +15,37 @@
                     <tr>
                         <td>
                             <label for="namatempat" style="font-size: small;color:#555">Nama tempat</label><br>
-                            <input type="text" name="namatempat" id="namatempat" style="width:100%; height:2rem; padding:0.3rem" autofocus required>
+                            <input type="text" name="namatempat" id="namatempat" style="width:100%; height:2rem; padding:0.3rem" value="<?= old('namatempat'); ?>" autofocus required>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label for="tentang" style="font-size: small;color:#555">Tentang</label><br>
-                            <textarea type="text" name="tentang" id="tentang" style="width:100%; height:3rem; padding:0.3rem" required></textarea>
+                            <textarea type="text" name="tentang" id="tentang" style="width:100%; height:3rem; padding:0.3rem" required><?= old('tentang'); ?></textarea>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label for="harga" style="font-size: small;color:#555">Harga</label><br>
-                            <input type="text" name="harga" id="harga" style="width:100%; height:2rem; padding:0.3rem" required>
+                            <input type="text" name="harga" id="harga" style="width:100%; height:2rem; padding:0.3rem" value="<?= old('harga'); ?>" required>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label for="provinsi" style="font-size: small;color:#555">Provinsi</label><br>
-                            <input type="text" name="provinsi" id="provinsi" style="width:100%; height:2rem; padding:0.3rem">
+                            <input type="text" name="provinsi" id="provinsi" style="width:100%; height:2rem; padding:0.3rem" value="<?= old('provinsi'); ?>">
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label for="alamat" style="font-size: small;color:#555" required>Alamat (Google Maps API)</label><br>
-                            <textarea name="alamat" id="alamat" style="width:100%; height:3rem; padding:0.3rem" required></textarea>
+                            <textarea name="alamat" id="alamat" style="width:100%; height:3rem; padding:0.3rem" required><?= old('alamat'); ?></textarea>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label for="provinsi" style="font-size: small;color:#555">Gambar</label><br>
-                            <input type="text" name="gambar" id="gambar" style="width:100%; height:2rem; padding:0.3rem" required>
+                            <input type="text" name="gambar" id="gambar" style="width:100%; height:2rem; padding:0.3rem" value="<?= old('gambar'); ?>" required>
                         </td>
                     </tr>
                     <tr>
