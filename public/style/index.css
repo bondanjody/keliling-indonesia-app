@@ -362,6 +362,9 @@ a {
   background-color: #ff3333;
   font-weight: normal;
 }
+.preview-gambar {
+  width: 100px;
+}
 
 /* responsive navbar and container*/
 @media (max-width: 600px) {

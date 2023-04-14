@@ -44,8 +44,11 @@
                     </tr>
                     <tr>
                         <td>
-                            <label for="provinsi" style="font-size: small;color:#555">Gambar</label><br>
-                            <input type="file" name="gambar" id="gambar" style="width:100%; height:2rem; padding:0.3rem" />
+                            <label for="gambar" class="label-gambar" style="font-size: small;color:#555">Gambar</label><br>
+                            <div>
+                                <img src="images/default.jpg" class="preview-gambar" />
+                            </div>
+                            <input type="file" name="gambar" id="gambar" style="width:100%; height:2rem; padding:0.3rem" onchange="previewImage()" />
                         </td>
                     </tr>
                     <tr>

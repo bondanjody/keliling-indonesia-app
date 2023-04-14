@@ -142,12 +142,21 @@ class Home extends BaseController
                 'errors' => [
                     'is_unique' => '{field} sudah terdaftar.'
                 ]
-            ]
+            ],
+            'gambar' => [
+                'rules' => 'max_size[gambar,1024]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'max_size' => 'Ukuran gambar melebihi batas',
+                    'is_image' => 'Yang anda inputkan bukan gambar',
+                    'mime_in' => 'Yang anda inputkan bukan gambar',
+                ]
+            ]    
         ])){
             $validation = \Config\Services::validation()->listErrors();
             return redirect()->to("wisata/edit/" . $this->request->getVar('slug'))->withInput()->with('validation', $validation);
         }
 
+        $fileGambar = $this->request->getFile('gambar');
 
         $slug = url_title($this->request->getVar('namatempat'), '-', true);
 

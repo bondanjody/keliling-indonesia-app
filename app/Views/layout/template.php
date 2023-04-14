@@ -120,6 +120,6 @@
             <p>Copyright &copy; 2022 Keliling Indonesia</p>
         </div>
     <!-- import script -->
-    <script src="../../script/script.js"></script>
+    <script src="script/script.js"></script>
 </body>
 </html>
