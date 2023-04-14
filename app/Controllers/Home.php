@@ -15,7 +15,7 @@ class Home extends BaseController
     public function index()
     {
         $data = [
-            'title'=>'Daftar Komik',
+            'title'=>'Keliling Indonesia',
             'wisata' => $this->wisataModel->getWisata()
         ];
         return view('wisata/home', $data);
@@ -54,17 +54,35 @@ class Home extends BaseController
                 'errors' => [
                     'is_unique' => '{field} sudah terdaftar.'
                 ]
+                ],
+            'gambar' => [
+                'rules' => 'uploaded[gambar]|max_size[gambar,1024]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'uploaded' => 'Pilih gambar terlebih dahulu',
+                    'max_size' => 'Ukuran gambar melebihi batas',
+                    'is_image' => 'Yang anda inputkan bukan gambar',
+                    'mime_in' => 'Yang anda inputkan bukan gambar',
+                ]
             ]
         ])){
             $validation = \Config\Services::validation()->listErrors();
             return redirect()->to('/tambah')->withInput()->with('validation', $validation);
         }
 
+        // ambil gambar
+        $fileGambar = $this->request->getFile('gambar');
+
+        // memindahkan file gambar ke folder images
+        $fileGambar->move('images');
+
+        // ambil nama file gambar
+        $gambar = $fileGambar->getName();
+
         $slug = url_title($this->request->getVar('namatempat'), '-', true);
 
         $this->wisataModel->save([
             'namatempat' => $this->request->getVar('namatempat'),
-            'gambar' => $this->request->getVar('gambar'),
+            'gambar' => $gambar,
             'alamat' => $this->request->getVar('alamat'),
             'tentang' => $this->request->getVar('tentang'),
             'harga' => $this->request->getVar('harga'),
