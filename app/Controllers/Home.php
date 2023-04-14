@@ -132,13 +132,16 @@ class Home extends BaseController
     public function update($id)
     {
         // Cek Nama tempat
-        // $wisataLama = $this->wisataModel->getWisata($this->request->getVar());
-        
-        // echo "test2";
+        $wisataLama = $this->wisataModel->getWisata($this->request->getVar('slug'));
+        if ($wisataLama['namatempat'] == $this->request->getVar('namatempat')) {
+            $rule_namatempat = 'required';
+        } else {
+            $rule_namatempat = 'required|is_unique[tempatwisata.namatempat]';
+        }
 
         if(!$this->validate([
             'namatempat' => [
-                'rules' => 'is_unique[tempatwisata.namatempat]',
+                'rules' => $rule_namatempat,
                 'errors' => [
                     'is_unique' => '{field} sudah terdaftar.'
                 ]
@@ -158,12 +161,26 @@ class Home extends BaseController
 
         $fileGambar = $this->request->getFile('gambar');
 
+        // cek gambar, apakah tetap gambar lama 
+        if ($fileGambar->getError() == 4) {
+            $namaGambar = $this->request->getVar('gambarLama');
+        } else {
+            // generate random name
+            $namaGambar = $fileGambar->getRandomName();
+
+            // upload file
+            $fileGambar->move('images', $namaGambar);
+
+            // hapus file lama
+            unlink('images/' . $this->request->getVar('gambarLama'));
+        }
+
         $slug = url_title($this->request->getVar('namatempat'), '-', true);
 
         $this->wisataModel->save([
             'id' => $id,
             'namatempat' => $this->request->getVar('namatempat'),
-            'gambar' => $this->request->getVar('gambar'),
+            'gambar' => $namaGambar,
             'alamat' => $this->request->getVar('alamat'),
             'tentang' => $this->request->getVar('tentang'),
             'harga' => $this->request->getVar('harga'),

@@ -41,13 +41,16 @@
                     <tr>
                         <td>
                             <label for="alamat" style="font-size: small;color:#555" required>Alamat (Google Maps API)</label><br>
-                            <textarea name="alamat" id="alamat" style="width:100%; height:3rem; padding:0.3rem" required><?= (old('provinsi')) ? old('provinsi') : $wisata['provinsi']; ?></textarea>
+                            <textarea name="alamat" id="alamat" style="width:100%; height:3rem; padding:0.3rem" required><?= (old('alamat')) ? old('alamat') : $wisata['alamat']; ?></textarea>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <label for="gambar" style="font-size: small;color:#555">Gambar</label><br>
-                            <input type="file" name="gambar" id="gambar" style="width:100%; height:2rem; padding:0.3rem" />
+                            <label for="gambar" class="label-gambar" style="font-size: small;color:#555"><?= $wisata['gambar'] ?></label><br>
+                            <div>
+                                <img src="<?= base_url() ?>images/<?= $wisata['gambar'] ?>" class="preview-gambar" />
+                            </div>
+                            <input type="file" name="gambar" id="gambar" style="width:100%; height:2rem; padding:0.3rem" onchange="previewImage()" />
                         </td>
                     </tr>
                     <tr>
