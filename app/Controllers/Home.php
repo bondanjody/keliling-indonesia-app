@@ -102,6 +102,17 @@ class Home extends BaseController
 
     public function delete($id)
     {
+        // mencari file gambar berdasarkan id
+        $wisata = $this->wisataModel->find($id);
+
+        // kondisi jika gambarnya adalah default.jpg
+        if ($wisata['gambar'] != 'default.jpg') {
+
+            // hapus gambar
+            unlink('images/' . $wisata['gambar']);
+        }
+
+
         $this->wisataModel->delete($id);
         session()->setFlashdata('pesan','Data berhasil dihapus !');
         return redirect()->to('/');
