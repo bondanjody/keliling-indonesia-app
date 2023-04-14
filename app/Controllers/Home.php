@@ -72,8 +72,11 @@ class Home extends BaseController
         // ambil gambar
         $fileGambar = $this->request->getFile('gambar');
 
+        // Meng generate nama gambar random
+        $namaGambar = $fileGambar->getRandomName();
+
         // memindahkan file gambar ke folder images
-        $fileGambar->move('images');
+        $fileGambar->move('images', $namaGambar);
 
         // ambil nama file gambar
         $gambar = $fileGambar->getName();
