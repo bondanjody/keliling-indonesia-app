@@ -56,9 +56,8 @@ class Home extends BaseController
                 ]
                 ],
             'gambar' => [
-                'rules' => 'uploaded[gambar]|max_size[gambar,1024]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
+                'rules' => 'max_size[gambar,1024]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
                 'errors' => [
-                    'uploaded' => 'Pilih gambar terlebih dahulu',
                     'max_size' => 'Ukuran gambar melebihi batas',
                     'is_image' => 'Yang anda inputkan bukan gambar',
                     'mime_in' => 'Yang anda inputkan bukan gambar',
@@ -72,20 +71,23 @@ class Home extends BaseController
         // ambil gambar
         $fileGambar = $this->request->getFile('gambar');
 
-        // Meng generate nama gambar random
-        $namaGambar = $fileGambar->getRandomName();
+        // Apabila tidak ada file yang di upload
+        if ($fileGambar->getError() == 4) {
+            $namaGambar = 'default.jpg';
+        } else {
+            // Meng generate nama gambar random
+            $namaGambar = $fileGambar->getRandomName();
+    
+            // memindahkan file gambar ke folder images
+            $fileGambar->move('images', $namaGambar);
+        }
 
-        // memindahkan file gambar ke folder images
-        $fileGambar->move('images', $namaGambar);
-
-        // ambil nama file gambar
-        $gambar = $fileGambar->getName();
 
         $slug = url_title($this->request->getVar('namatempat'), '-', true);
 
         $this->wisataModel->save([
             'namatempat' => $this->request->getVar('namatempat'),
-            'gambar' => $gambar,
+            'gambar' => $namaGambar,
             'alamat' => $this->request->getVar('alamat'),
             'tentang' => $this->request->getVar('tentang'),
             'harga' => $this->request->getVar('harga'),
